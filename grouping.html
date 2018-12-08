@@ -1,0 +1,22 @@
+
+<html>
+    <head>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+
+    <script>
+
+d3.csv("3---administration-of-justice.csv", function(error, csv_data) {
+    var array = []
+    var data = d3.nest()
+     .key(function(d) { return d.Voted_Charged;})
+     .rollup(function(d) { 
+      return d3.sum(d, function(g) {return g.Actuals_2016_17;});
+      }).entries(csv_data);
+      
+     console.log(data);
+     console.log(data[0])
+   });
+
+</script>
+</html>
